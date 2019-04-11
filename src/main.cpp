@@ -1,7 +1,6 @@
-#include <stdio.h>
+#include <SDL_main.h>
 
-int main(int argc, char* argv[])
+int SDL_main(int argc, char* argv[])
 {
-	printf("Hello, world!\n");
 	return 0;
 }

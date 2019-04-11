@@ -9,6 +9,7 @@ namespace ccm {
 		{
 			std::cerr << "SDL_Init Error: " << SDL_GetError() << std::endl;
 			m_quit = true;
+			return;
 		}
 
 		/* Create window */
@@ -17,6 +18,7 @@ namespace ccm {
 		{
 			std::cerr << "SDL_CreateWindow Error: " << SDL_GetError() << std::endl;
 			m_quit = true;
+			return;
 		}
 
 		/* Create renderer */
@@ -27,6 +29,7 @@ namespace ccm {
 			m_quit = true;
 		}
 	}
+
 	Application::~Application() {
 		/* Finalize and exit */
 		SDL_DestroyWindow(m_window);

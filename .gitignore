@@ -1,0 +1,8 @@
+/.vs/
+/bin/
+/build/
+
+*.sln
+
+premake5.exe
+premake5

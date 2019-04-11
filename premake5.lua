@@ -49,7 +49,6 @@ group "ThirdParty"
       "third_party/SDL/src/*.c",
       "third_party/SDL/src/*/*.c",
       "third_party/SDL/src/*/dummy/*.c",
-      "third_party/SDL/src/*/generic/*.c",
       "third_party/SDL/src/render/software/*.c",
     }
     removefiles {
@@ -68,10 +67,8 @@ group "ThirdParty"
         "third_party/SDL/src/render/direct3d11/*.c",
         "third_party/SDL/src/render/opengl/*.c",
         "third_party/SDL/src/render/opengles2/*.c",
+        "third_party/SDL/src/thread/generic/SDL_syscond.c",
         "third_party/SDL/src/video/yuv2rgb/*.c",
-      }
-      removefiles {
-        "third_party/SDL/src/thread/windows/*.c",
       }
     -- Linux settings
     filter { "system:linux" }

@@ -2,8 +2,10 @@
 
 #include <iostream>
 
-namespace ccm {
-	Application::Application(){
+namespace ccm
+{
+	Application::Application()
+	{
 		/* Initialize SDL */
 		if (SDL_Init(SDL_INIT_EVERYTHING) != 0)
 		{
@@ -30,14 +32,30 @@ namespace ccm {
 		}
 	}
 
-	Application::~Application() {
+	Application::~Application()
+	{
 		/* Finalize and exit */
 		SDL_DestroyWindow(m_window);
 		SDL_Quit();
 	}
 
-	void Application::render() {
+	void Application::render()
+	{
 		SDL_RenderClear(m_renderer);
 		SDL_RenderPresent(m_renderer);
+	}
+
+	void Application::handleEvents()
+	{
+		SDL_Event event;
+		while (SDL_PollEvent(&event))
+		{
+			switch (event.type)
+			{
+				case SDL_QUIT:
+					m_quit = true;
+					break;
+			}
+		}
 	}
 }

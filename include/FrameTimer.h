@@ -16,6 +16,6 @@ namespace ccm
 
 		float mark();
 	private:
-		std::chrono::steady_clock::time_point start, end;
+		Clock::time_point m_start, m_end;
 	};
 }

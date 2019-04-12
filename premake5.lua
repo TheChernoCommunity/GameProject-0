@@ -87,12 +87,14 @@ group "Game"
     includedirs { "third_party/SDL/include/", "include" }
     files { "src/**.cpp", "include/**.h", "include/**.hpp" }
     links { "SDL" }
-    -- Windows settings
-    filter { "system:windows" }
+    -- Visual studio settings
+    filter "action:vs*"
       vpaths {
         ["Headers"] = { "include/**.h", "include/**.hpp" },
         ["Sources"] = {"src/**.cpp"},
       }
+    -- Windows settings
+    filter { "system:windows" }
       links {
         "Winmm",
         "version",

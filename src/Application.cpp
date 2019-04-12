@@ -47,9 +47,10 @@ namespace ccm
 
 	void Application::handleEvents()
 	{
-		while (SDL_PollEvent(&m_event))
+		SDL_Event event;
+		while (SDL_PollEvent(&event))
 		{
-			switch (m_event.type)
+			switch (event.type)
 			{
 				case SDL_QUIT:
 					m_quit = true;

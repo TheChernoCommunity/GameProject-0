@@ -4,8 +4,10 @@
 #include <SDL_main.h>
 #include <SDL_video.h>
 
-namespace ccm {
-	class Application {
+namespace ccm
+{
+	class Application
+	{
 	public:
 		Application();
 		Application(const Application&) = delete;
@@ -15,6 +17,8 @@ namespace ccm {
 		~Application();
 
 		void render();
+		void handleEvents();
+
 		bool m_quit{ false };
 
 	private:

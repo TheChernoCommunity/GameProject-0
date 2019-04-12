@@ -85,12 +85,12 @@ group "Game"
     kind "WindowedApp"
     configure_project_base()
     includedirs { "third_party/SDL/include/", "include" }
-    files { "src/**.cpp", "include/**.h", "include/**.hpp" }
+    files { "src/**.cpp", "include/**.h"  }
     links { "SDL" }
     -- Visual studio settings
     filter "action:vs*"
       vpaths {
-        ["Headers"] = { "include/**.h", "include/**.hpp" },
+        ["Headers"] = { "include/**.h" },
         ["Sources"] = {"src/**.cpp"},
       }
     -- Windows settings

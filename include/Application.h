@@ -30,8 +30,8 @@ namespace ccm
 
 		/*
 		 * Gets the size of the window
-	     * @return width and height of the screen
-	     */
+		 * @return width and height of the screen
+		 */
 		std::pair<int, int> getSize() { return std::make_pair(m_width, m_height); };
 
 	private:

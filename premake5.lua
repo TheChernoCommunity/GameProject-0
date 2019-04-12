@@ -29,6 +29,7 @@ local function configure_project_base()
   -- Windows
   filter "system:windows"
     defines { "NOMINMAX", "WIN32_LEAN_AND_MEAN" }
+    systemversion "latest"
 
   -- Reset filter
   filter{}

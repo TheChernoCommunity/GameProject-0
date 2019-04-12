@@ -84,7 +84,7 @@ group "Game"
   project "Game"
     kind "WindowedApp"
     configure_project_base()
-    includedirs { "third_party/SDL/include/" }
+    includedirs { "third_party/SDL/include/", "include" }
     files { "src/**.cpp", "src/**.h" }
     links { "SDL" }
     -- Windows settings

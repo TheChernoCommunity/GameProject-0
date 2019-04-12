@@ -20,10 +20,10 @@ namespace ccm
 		void handleEvents();
 
 		bool m_quit{ false };
-		SDL_Event m_event;
 
 	private:
 		SDL_Window* m_window{ nullptr };
 		SDL_Renderer* m_renderer{ nullptr };
+		SDL_Event m_event;
 	};
 }

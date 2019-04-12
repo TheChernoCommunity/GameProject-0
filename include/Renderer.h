@@ -40,7 +40,7 @@ namespace ccm
 		/*
 		 * Fills a rect with the current drawing color
 		 * @param rect : rect to be filled with drawing color
-	     */
+		 */
 		void fillRect(const Rect& rect);
 	};
 }

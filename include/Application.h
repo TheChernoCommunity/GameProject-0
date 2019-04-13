@@ -4,14 +4,14 @@
 #include <SDL_main.h>
 #include <SDL_video.h>
 
-#include <string>
+#include <string_view>
 
 namespace ccm
 {
 	class Application
 	{
 	public:
-		Application(const std::string windowName, int width, int height);
+		Application(std::string_view windowName, int width, int height);
 		Application(const Application&) = delete;
 		Application& operator=(const Application&) = delete;
 		Application(Application&&) = delete;

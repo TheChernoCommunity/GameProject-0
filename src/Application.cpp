@@ -4,7 +4,7 @@
 
 namespace ccm
 {
-	Application::Application(const std::string windowName, int width, int height)
+	Application::Application(std::string_view windowName, int width, int height)
 		: m_width{ width }, m_height{ height }
 	{
 		/* Initialize SDL */
@@ -16,7 +16,7 @@ namespace ccm
 		}
 
 		/* Create window */
-		m_window = SDL_CreateWindow(windowName.c_str(), SDL_WINDOWPOS_CENTERED,
+		m_window = SDL_CreateWindow(windowName.data(), SDL_WINDOWPOS_CENTERED,
 			SDL_WINDOWPOS_CENTERED, m_width, m_height, SDL_WINDOW_RESIZABLE);
 		if (m_window == nullptr)
 		{

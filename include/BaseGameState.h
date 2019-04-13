@@ -5,8 +5,8 @@
 class GameState
 {
 public:
-	GameState() {}
-	virtual ~GameState() {}
+	GameState() = default;
+	virtual ~GameState() = default;
 	
 	virtual void handleEvent(SDL_Event& event) {}
 	// TODO: Have update take in a deltatime

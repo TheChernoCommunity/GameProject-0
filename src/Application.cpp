@@ -62,7 +62,7 @@ namespace ccm
 					break;
 
 				default:
-					if (m_gameStates.size() > 0)
+					if (!m_gameStates.empty())
 					{
 						m_gameStates.back()->handleEvent(event);
 					}
@@ -76,7 +76,7 @@ namespace ccm
 
 	void Application::popState()
 	{
-		if (m_gameStates.size() > 0)
+		if (!m_gameStates.empty())
 		{
 			m_gameStates.pop_back();
 		}

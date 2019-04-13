@@ -34,10 +34,9 @@ namespace ccm
 		}
 
 		template<typename T, typename... Args>
-		void pushState(Args... args)
+		void pushState(Args&&... args)
 		{
-			std::unique_ptr<GameState> nextState = std::make_unique<T>(args...);
-			m_gameStates.push_back(std::move(nextState));
+			m_gameStates.push_back(std::make_unique<T>(std::forward<Args>(args)...));
 		}
 
 		void popState();

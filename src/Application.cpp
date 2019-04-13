@@ -33,8 +33,6 @@ namespace ccm
 		SDL_Quit();
 	}
 
-
-
 	void Application::handleEvents()
 	{
 		SDL_Event event;

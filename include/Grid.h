@@ -5,6 +5,7 @@
 #include "Color.h"
 #include "Rect.h"
 #include "Object.h"
+#include "Tile.h"
 #include <vector>
 #include <algorithm>
 #include <utility>
@@ -14,37 +15,23 @@ namespace ccm
 	class Grid
 	{
 	private:
-		class Tile
-		{
-		public:
-			Tile();
-			Tile(const Rect& pos);
-			Tile(int x, int y, int w, int h);
-
-			Object draw() const;
-
-			void fill();
-			void empty();
-
-		private:
-			Rect m_position;
-			bool m_isFilled;
-		};
+		
 	public:
 		Grid(const Rect& position, int columns, int rows);
 		Grid(int x, int y, int w, int h, int columns, int rows);
 
-		Tile& operator()(int x, int y);
+		Tile& getTile(int x, int y);
+		const std::vector<Tile>& getTiles() const;
 
-		int getWidth();
-		int getHeight();
-		std::pair<int, int> getDimensions();
+		int getWidth() const;
+		int getHeight() const;
+		std::pair<int, int> getDimensions() const;
 
-		std::vector<Object> draw() const;
+		const Object& draw() const;
 
 	private:
 		const int m_numColumns, m_numRows;
-		Rect m_position;
+		Object m_object;
 		std::vector<Tile> m_tiles;
 	};
 }

@@ -12,6 +12,10 @@ namespace ccm
 	 */
 	struct Object
 	{
+		Object() = default;
+		Object(const Rect& r, const Color& c)
+			: rect(r), color(c)
+		{}
 		Rect rect;
 		Color color;
 	};

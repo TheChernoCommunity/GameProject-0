@@ -16,6 +16,7 @@ namespace ccm
 		Application& operator=(Application&&) = delete;
 		~Application();
 
+		void update(float dt);
 		void render();
 		void handleEvents();
 

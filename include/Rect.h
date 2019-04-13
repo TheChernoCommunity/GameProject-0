@@ -4,8 +4,5 @@
 
 namespace ccm
 {
-	struct Rect
-	{
-		SDL_Rect rect{};
-	};
+	using Rect = SDL_Rect;
 }

@@ -2,6 +2,7 @@
 #include "Renderer.h"
 #include "Object.h"
 #include "Grid.h"
+#include "FrameTimer.h"
 
 #include <iostream>
 
@@ -11,6 +12,8 @@ int SDL_main(int argc, char* argv[])
 	ccm::Renderer renderer{ app };
 	auto[width, height] = app.getSize();
 	ccm::Object obj{ ccm::Rect{width / 2, height / 2, 128, 128}, ccm::Colors::Green };
+
+	ccm::FrameTimer ft{};
 	
 	// Generate and fill some of the grid elements
 	ccm::Grid grid(ccm::Rect{ 0, 0, width / 2, height }, 10, 20);
@@ -29,6 +32,7 @@ int SDL_main(int argc, char* argv[])
 	/* Game loop */
 	while (!app.m_quit)
 	{
+		float dt = ft.mark();
 		app.handleEvents();
 		renderer.clear();
 		// Draw the grid

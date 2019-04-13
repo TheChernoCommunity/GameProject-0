@@ -11,6 +11,6 @@ public:
 	// Make un-default when actually needed
 	GameplayState() = default;
 
-	void handleEvent(SDL_Event& event) override;
+	void handleEvent(const SDL_Event& event) override;
 	void update() override;
 };

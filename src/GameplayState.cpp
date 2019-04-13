@@ -1,6 +1,6 @@
 #include "GameplayState.h"
 
-void GameplayState::handleEvent(SDL_Event& event)
+void GameplayState::handleEvent(const SDL_Event& event)
 {
 	switch (event.type)
 	{

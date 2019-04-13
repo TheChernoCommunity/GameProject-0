@@ -8,7 +8,7 @@ public:
 	GameState() = default;
 	virtual ~GameState() = default;
 	
-	virtual void handleEvent(SDL_Event& event) {}
+	virtual void handleEvent(const SDL_Event& event) {}
 	// TODO: Have update take in a deltatime
 	virtual void update() {}
 };

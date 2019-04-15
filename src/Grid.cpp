@@ -13,13 +13,13 @@ namespace ccm
 	Grid::Grid(const Rect& position, int columns, int rows)
 		: m_object(position, Color(128, 128, 128, 255)), m_numColumns(columns), m_numRows(rows)
 	{
-		int tileWidth = m_object.rect.rect.w / columns;
-		int tileHeigh = m_object.rect.rect.h / rows;
+		int tileWidth = m_object.rect.w / columns;
+		int tileHeigh = m_object.rect.h / rows;
 
 		m_tiles.reserve(columns * rows);
 		for (int y = 0; y < m_numRows; ++y)
 			for (int x = 0; x < m_numColumns; ++x)
-				m_tiles.emplace_back(x * tileWidth + 1 + position.rect.x, y * tileHeigh + 1 + position.rect.y, tileWidth - 2, tileHeigh - 2);
+				m_tiles.emplace_back(x * tileWidth + 1 + m_object.rect.x, y * tileHeigh + 1 + m_object.rect.y, tileWidth - 2, tileHeigh - 2);
 	}
 
 	Tile& Grid::getTile(int x, int y)

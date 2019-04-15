@@ -23,7 +23,7 @@ namespace ccm
 	void Renderer::draw(const Object& obj)
 	{
 		setRenderColor(obj.color);
-		SDL_RenderFillRect(m_renderer, &obj.rect.rect);
+		SDL_RenderFillRect(m_renderer, &obj.rect);
 	}
 
 	void Renderer::render()
@@ -38,6 +38,6 @@ namespace ccm
 
 	void Renderer::fillRect(const Rect& rect)
 	{
-		SDL_RenderFillRect(m_renderer, &rect.rect);
+		SDL_RenderFillRect(m_renderer, &rect);
 	}
 }

@@ -11,7 +11,6 @@ int SDL_main(int argc, char* argv[])
 #ifdef _DEBUG
 	ccm::Console::initialize();
 #endif
-	printf("Test\n");
 	ccm::Application app("Game", 1280, 720);
 	ccm::Renderer renderer{ app };
 	auto[width, height] = app.getSize();

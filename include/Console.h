@@ -13,6 +13,7 @@ namespace ccm
 
 	#ifdef _WIN32
 		FILE* m_stdout;
+		FILE* m_stderr;
 	#endif
 	};
 }

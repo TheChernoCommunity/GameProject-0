@@ -1,5 +1,6 @@
 #pragma once
 
+#include <memory>
 #include "Application.h"
 #include "Object.h"
 #include "Rect.h"
@@ -24,6 +25,8 @@ namespace ccm
 		 * @param object: object to be drawn
 		 */
 		void draw(const Object& obj);
+
+		void renderSurface(SDL_Surface* source, const Rect dest);
 
 		/*
 		 * Renders all drawn objects to the screen.

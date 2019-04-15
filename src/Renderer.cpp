@@ -26,6 +26,13 @@ namespace ccm
 		SDL_RenderFillRect(m_renderer, &obj.rect);
 	}
 
+	void Renderer::renderSurface(SDL_Surface* source, const Rect dest)
+	{
+		SDL_Texture* tex = SDL_CreateTextureFromSurface(m_renderer, source);
+		SDL_RenderCopy(m_renderer, tex, nullptr, &dest);
+		SDL_DestroyTexture(tex);
+	}
+
 	void Renderer::render()
 	{
 		SDL_RenderPresent(m_renderer);

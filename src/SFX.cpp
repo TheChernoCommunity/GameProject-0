@@ -6,11 +6,12 @@
 
 namespace ccm
 {
-	SFX::SFX(std::filesystem::path filepath)
+	SFX::SFX(const std::filesystem::path& filepath)
 	{
 		if (!std::filesystem::exists(filepath))
 		{
 			std::cerr << "Could not find: " << filepath << '\n';
+			return;
 		}
 
 		m_chunk = Mix_LoadWAV(filepath.string().c_str());
@@ -18,6 +19,7 @@ namespace ccm
 		if (m_chunk == nullptr)
 		{
 			std::cerr << Mix_GetError() << '\n';
+			return;
 		}
 	}
 	SFX::SFX(SFX&& other)

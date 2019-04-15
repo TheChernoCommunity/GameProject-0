@@ -6,12 +6,13 @@
 
 namespace ccm
 {
-	Music::Music(std::filesystem::path filepath, int loops)
+	Music::Music(const std::filesystem::path& filepath, int loops)
 		: m_loops{ loops }
 	{
 		if (!std::filesystem::exists(filepath))
 		{
 			std::cerr << "Could not find: " << filepath << '\n';
+			return;
 		}
 
 		m_music = Mix_LoadMUS(filepath.string().c_str());
@@ -19,6 +20,7 @@ namespace ccm
 		if (m_music == nullptr)
 		{
 			std::cerr << Mix_GetError() << '\n';
+			return;
 		}
 	}
 

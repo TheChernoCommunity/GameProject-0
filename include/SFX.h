@@ -15,7 +15,7 @@ namespace ccm
 	private:
 		Mix_Chunk* m_chunk{};
 	public:
-		SFX(std::filesystem::path filepath);
+		SFX(const std::filesystem::path& filepath);
 		SFX(const SFX&) = delete;
 		SFX& operator=(const SFX&) = delete;
 		SFX(SFX&& other);

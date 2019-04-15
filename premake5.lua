@@ -108,6 +108,7 @@ group "Game"
       "third_party/SDL/include/",
       "third_party/SDL_mixer/",
     }
+    debugdir "."
     files { "src/**.cpp", "include/**.h"  }
     links { "SDL", "SDL_mixer" }
     -- Visual studio settings

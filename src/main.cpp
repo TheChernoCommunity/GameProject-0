@@ -4,6 +4,8 @@
 #include "FrameTimer.h"
 #include "Grid.h"
 #include "Console.h"
+#include "TextureGenerator.h"
+#include "Texture.h"
 #include <iostream>
 
 int SDL_main(int argc, char* argv[])
@@ -13,9 +15,11 @@ int SDL_main(int argc, char* argv[])
 #endif
 	ccm::Application app("Game", 1280, 720);
 	ccm::Renderer renderer{ app };
+	ccm::TextureGenerator::create(renderer);
 	auto[width, height] = app.getSize();
 	ccm::Object obj{ ccm::Rect{width / 2, height / 2, 128, 128}, ccm::Colors::Green };
 	ccm::Grid grid(ccm::Rect{ 0, 0, width / 2, height }, 16, 18);
+	ccm::Texture mario("../../assets/mario.jpg");
 
 	for (int x = 0; x < grid.getWidth(); ++x)
 	{
@@ -39,7 +43,7 @@ int SDL_main(int argc, char* argv[])
 		{
 			renderer.draw(o.draw());
 		}
-
+		renderer.renderTexture(mario.draw(), { 0, 0, mario.width(), mario.height() });
 		renderer.draw(obj);
 		renderer.render();
 	}

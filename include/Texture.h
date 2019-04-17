@@ -1,61 +1,25 @@
 #pragma once
 
-#include <string_view>
+#include "TextureGenerator.h"
+
+#include <SDL.h>
 #include <stb_image.h>
+
+#include <string_view>
 #include <memory>
+#include <functional>
+
 namespace ccm
 {
 	class Texture
 	{
 	public:
-		Texture(std::string_view textureSource)
-		{
-			int width, height, bytesPerPixel;
-			void* imageData = stbi_load(textureSource.data(), &width, &height, &bytesPerPixel, STBI_rgb_alpha);
-			std::uint32_t pixelFormat;
-			if (bytesPerPixel == 3)
-			{
-				pixelFormat = SDL_PIXELFORMAT_BGR888;
-			}
-			else if (bytesPerPixel == 4)
-			{
-				pixelFormat = SDL_PIXELFORMAT_BGRA8888;
-			}
-
-			m_surface = SDL_CreateRGBSurfaceWithFormat(0, width, height, bytesPerPixel, pixelFormat);
-
-			SDL_LockSurface(m_surface);
-			
-			m_surface->pixels = imageData;
-			
-			SDL_UnlockSurface(m_surface);
-		}
-
-		~Texture()
-		{
-			SDL_LockSurface(m_surface);
-			stbi_image_free(m_surface->pixels);
-			m_surface->pixels = nullptr;
-			SDL_UnlockSurface(m_surface);
-			SDL_FreeSurface(m_surface);
-		}
-
-		SDL_Surface* draw()
-		{
-			return m_surface;
-		}
-		
-		int width() const
-		{
-			return m_surface->w;
-		}
-
-		int height() const
-		{
-			return m_surface->h;
-		}
-
+		Texture(std::string_view textureSource);
+		SDL_Texture* draw() const ;
+		int width() const;
+		int height() const;
 	private:
-		SDL_Surface* m_surface;
+		std::unique_ptr<SDL_Texture, std::function<void(SDL_Texture*)>> m_texture;
+		int m_width, m_height, m_pitch;
 	};
 }

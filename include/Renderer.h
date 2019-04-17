@@ -26,6 +26,10 @@ namespace ccm
 		 */
 		void draw(const Object& obj);
 
+		SDL_Texture* createTextureFromSurface(SDL_Surface* src);
+
+		void renderTexture(SDL_Texture* source, const Rect dest);
+
 		void renderSurface(SDL_Surface* source, const Rect dest);
 
 		/*

@@ -1,6 +1,5 @@
 
 #include "Renderer.h"
-
 #include <iostream>
 
 namespace ccm
@@ -24,6 +23,16 @@ namespace ccm
 	{
 		setRenderColor(obj.color);
 		SDL_RenderFillRect(m_renderer, &obj.rect);
+	}
+
+	SDL_Texture* Renderer::createTextureFromSurface(SDL_Surface* src)
+	{
+		return SDL_CreateTextureFromSurface(m_renderer, src);
+	}
+
+	void Renderer::renderTexture(SDL_Texture* source, const Rect dest)
+	{
+		SDL_RenderCopy(m_renderer, source, nullptr, &dest);
 	}
 
 	void Renderer::renderSurface(SDL_Surface* source, const Rect dest)

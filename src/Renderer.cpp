@@ -30,9 +30,9 @@ namespace ccm
 		return SDL_CreateTextureFromSurface(m_renderer, src);
 	}
 
-	void Renderer::renderTexture(SDL_Texture* source, const Rect dest)
+	void Renderer::renderTexture(const Texture& source/*SDL_Texture* source*/, const Rect dest)
 	{
-		SDL_RenderCopy(m_renderer, source, nullptr, &dest);
+		SDL_RenderCopy(m_renderer, source.draw(), nullptr, &dest);
 	}
 
 	void Renderer::renderSurface(SDL_Surface* source, const Rect dest)

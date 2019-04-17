@@ -1,4 +1,5 @@
 #include "TextureGenerator.h"
+#include "Renderer.h"
 
 namespace ccm
 {

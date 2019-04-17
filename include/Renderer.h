@@ -4,6 +4,7 @@
 #include "Application.h"
 #include "Object.h"
 #include "Rect.h"
+#include "Texture.h"
 
 namespace ccm
 {
@@ -28,7 +29,7 @@ namespace ccm
 
 		SDL_Texture* createTextureFromSurface(SDL_Surface* src);
 
-		void renderTexture(SDL_Texture* source, const Rect dest);
+		void renderTexture(const Texture& source, const Rect dest);
 
 		void renderSurface(SDL_Surface* source, const Rect dest);
 

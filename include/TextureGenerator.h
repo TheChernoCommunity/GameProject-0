@@ -1,15 +1,14 @@
 #pragma once
 
-#include "Renderer.h"
 #include "SDL.h"
 #include "stb_image.h"
 
 #include <string_view>
 #include <assert.h>
 #include <tuple>
-
 namespace ccm
 {
+	class Renderer;
 	class TextureGenerator
 	{
 	public:

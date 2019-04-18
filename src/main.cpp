@@ -6,10 +6,14 @@
 #include "AssetManager.h"
 #include "Music.h"
 #include "SFX.h"
+#include "Console.h"
 #include <iostream>
 
 int SDL_main(int argc, char* argv[])
 {
+#ifdef _DEBUG
+	ccm::Console::initialize();
+#endif
 	ccm::Application app("Game", 1280, 720);
 	ccm::Renderer renderer{ app };
 

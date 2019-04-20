@@ -18,6 +18,10 @@ namespace ccm
 		int width, height, bytesPerPixel;
 		void* imageData = stbi_load(textureSource.data(), &width, &height, &bytesPerPixel, STBI_rgb_alpha);
 
+		// TODO: This will likely need to be more robust as there is probably other reasons why an image file could not be loaded
+		// e.g. it is in use by another application
+		assert(imageData != nullptr && "Failed to load image, ensure filepath is valid and correct");
+		
 		// Set the textures channel layout.
 		std::uint32_t pixelFormat;
 		if (bytesPerPixel == 3)

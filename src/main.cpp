@@ -43,7 +43,7 @@ int SDL_main(int argc, char* argv[])
 		{
 			renderer.draw(o.draw());
 		}
-		renderer.renderTexture(mario, { 0, 0, mario.width(), mario.height() });
+		renderer.renderTexture(mario, { 0, 0, mario.getWidth(), mario.getHeight() });
 		renderer.draw(obj);
 		renderer.render();
 	}

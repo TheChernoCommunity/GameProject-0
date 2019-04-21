@@ -1,4 +1,5 @@
 #include "Application.h"
+#include "GameplayState.h"
 
 #include <iostream>
 
@@ -24,6 +25,10 @@ namespace ccm
 			m_quit = true;
 			return;
 		}
+
+		/* Pushes the first state onto the stack. */
+		// TODO: Change this to the start screen state or whatever later
+		pushState<GameplayState>();
 	}
 
 	Application::~Application()
@@ -43,7 +48,29 @@ namespace ccm
 				case SDL_QUIT:
 					m_quit = true;
 					break;
+
+				default:
+					if (!m_gameStates.empty())
+					{
+						m_gameStates.back()->handleEvent(event);
+					}
+					else
+					{
+						std::cerr << "No game states in vector." << std::endl;
+					}
 			}
+		}
+	}
+
+	void Application::popState()
+	{
+		if (!m_gameStates.empty())
+		{
+			m_gameStates.pop_back();
+		}
+		else
+		{
+			std::cerr << "Attempted to pop state off empty vector." << std::endl;
 		}
 	}
 }

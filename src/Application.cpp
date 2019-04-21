@@ -29,11 +29,19 @@ namespace ccm
 		/* Pushes the first state onto the stack. */
 		// TODO: Change this to the start screen state or whatever later
 		pushState<GameplayState>();
+
+		if (Mix_OpenAudio(22050, MIX_DEFAULT_FORMAT, 2, 4096) == -1) {
+			std::cerr << "SDL_mixer Error: " << SDL_GetError() << std::endl;
+			std::cerr << "SDL_mixer Error: " << Mix_GetError() << std::endl;
+			m_quit = true;
+			return;
+		}
 	}
 
 	Application::~Application()
 	{
 		/* Finalize and exit */
+		Mix_CloseAudio();
 		SDL_DestroyWindow(m_window);
 		SDL_Quit();
 	}

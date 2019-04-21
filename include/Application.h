@@ -7,6 +7,9 @@
 #include <SDL_main.h>
 #include <SDL_video.h>
 #include "BaseGameState.h"
+#include <SDL_mixer.h>
+
+#include <string_view>
 
 namespace ccm
 {

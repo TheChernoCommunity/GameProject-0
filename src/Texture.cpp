@@ -2,7 +2,7 @@
 
 namespace ccm
 {
-	Texture::Texture(std::string_view textureSource) : m_texture(nullptr, SDL_DestroyTexture)
+	Texture::Texture(std::string_view textureSource)
 	{
 		auto[pTex, width, height, pitch] = TextureGenerator::loadTextureFromFile(textureSource);
 		m_texture.reset(pTex);
@@ -11,25 +11,9 @@ namespace ccm
 		m_pitch = pitch;
 	}
 
-	Texture::Texture(Texture&& other)
-		:
-		m_texture(std::move(other.m_texture)), m_width(other.m_width),
-		m_height(m_height), m_pitch(m_pitch)
-	{	}
-
-	Texture& Texture::operator=(Texture&& other)
-	{
-		SDL_DestroyTexture(m_texture.get());
-		m_texture = std::move(other.m_texture);
-		m_width = other.m_width;
-		m_height = other.m_height;
-		m_pitch = other.m_pitch;
-		return *this;
-	}
-
-	SDL_Texture* Texture::draw() const
-	{
-		return m_texture.get();
+	SDL_Texture& Texture::draw() const
+{
+		return *m_texture;
 	}
 
 	int Texture::getWidth() const
@@ -45,5 +29,11 @@ namespace ccm
 	std::pair<int, int> Texture::getDimensions() const
 	{
 		return std::make_pair(m_width, m_height);
+	}
+
+	void Texture::TextureDeleter::operator()(SDL_Texture* texture)
+	{
+		if (texture)
+			SDL_DestroyTexture(texture);
 	}
 }

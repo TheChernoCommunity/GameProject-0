@@ -11,7 +11,7 @@ namespace ccm
 		}
 	}
 
-	std::tuple<SDL_Texture*, int, int, int> TextureGenerator::loadTextureFromFile(std::string_view textureSource)
+	TextureGenerator::TextureInfo TextureGenerator::loadTextureFromFile(std::string_view textureSource)
 	{
 		assert(m_renderer != nullptr && "Ensure to call TextureGenerator::Create(Renderer*) before trying to load a texture");
 		// Load the image data
@@ -45,7 +45,7 @@ namespace ccm
 		pSurface->pixels = nullptr;
 		SDL_FreeSurface(pSurface);
 
-		return std::make_tuple(pTex, width, height, pitch);
+		return {pTex, width, height, pitch};
 	}
 
 }

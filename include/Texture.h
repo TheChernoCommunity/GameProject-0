@@ -14,18 +14,23 @@ namespace ccm
 {
 	class Texture
 	{
+	private:
+		struct TextureDeleter
+		{
+			void operator()(SDL_Texture* texture);
+		};
 	public:
 		Texture() = default;
 		Texture(std::string_view textureSource);
 
 		Texture(const Texture& other) = delete;
-		Texture(Texture&& other);
+		Texture(Texture&& other) = default;
 		Texture& operator=(const Texture& other) = delete;
-		Texture& operator=(Texture&& other);
+		Texture& operator=(Texture&& other) = default;
 		~Texture() = default;
 				
 		/* Returns the underlying texture so the render can draw to the screen. */
-		SDL_Texture* draw() const ;
+		SDL_Texture& draw() const ;
 		/* Returns the width of the loaded texture */
 		int getWidth() const;
 		/* Returns the height of the loaded texture */
@@ -33,7 +38,7 @@ namespace ccm
 		/* Returns the dimensions of the loaded texture */
 		std::pair<int, int> getDimensions() const;
 	private:
-		std::unique_ptr<SDL_Texture, std::function<void(SDL_Texture*)>> m_texture;
+		std::unique_ptr<SDL_Texture, TextureDeleter> m_texture;
 		int m_width, m_height, m_pitch;
 	};
 }

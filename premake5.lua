@@ -80,13 +80,37 @@ group "ThirdParty"
         "third_party/SDL/src/thread/pthread/*.c",
       }
 
+  project "SDL_mixer"
+    kind "StaticLib"
+    configure_project_base()
+    warnings "Off"
+    defines { "MUSIC_OGG", "_USE_MATH_DEFINES" }
+    includedirs {
+      "third_party/SDL/include/",
+      "third_party/SDL_mixer/",
+      "third_party/SDL_mixer/external/libogg-1.3.2/include/",
+      "third_party/SDL_mixer/external/libvorbis-1.3.5/include/",
+      "third_party/SDL_mixer/external/libvorbis-1.3.5/lib/",
+    }
+    files {
+      "third_party/SDL_mixer/*.c",
+      "third_party/SDL_mixer/external/libogg-1.3.2/src/*c",
+      "third_party/SDL_mixer/external/libvorbis-1.3.5/lib/*c",
+    }
+    excludes { "third_party/SDL_mixer/external/libvorbis-1.3.5/lib/psytune.c" }
+
 group "Game"
   project "Game"
     kind "WindowedApp"
     configure_project_base()
-    includedirs { "third_party/SDL/include/", "include" }
+    includedirs {
+      "include",
+      "third_party/SDL/include/",
+      "third_party/SDL_mixer/",
+    }
+    debugdir "."
     files { "src/**.cpp", "include/**.h"  }
-    links { "SDL" }
+    links { "SDL", "SDL_mixer" }
     -- Visual studio settings
     filter "action:vs*"
       vpaths {

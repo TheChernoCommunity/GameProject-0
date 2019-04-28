@@ -27,11 +27,11 @@ namespace ccm
 		std::visit(
 			overloaded{
 				[&](const Color& c) {
-					setRenderColor(std::get<Color>(obj.apperance));
+					setRenderColor(c);
 					SDL_RenderFillRect(m_renderer, &obj.rect);
 				},
 				[&](const Texture* tex) {
-					SDL_RenderCopy(m_renderer, &std::get<const Texture*>(obj.apperance)->draw(), NULL, &obj.rect);
+					SDL_RenderCopy(m_renderer, &tex->draw(), NULL, &obj.rect);
 				},			
 			},
 			obj.apperance

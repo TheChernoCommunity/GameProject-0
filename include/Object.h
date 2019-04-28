@@ -29,17 +29,8 @@ namespace ccm
 		{
 			apperance = c;
 		}
-		size_t getTypeIndex() const
-		{
-			return apperance.index();
-		}
 
 		Rect rect;
 		std::variant<Color, const Texture*> apperance;
-		enum class variantIndex
-		{
-			Color = 0,
-			Texture = 1
-		};
 	};
 }

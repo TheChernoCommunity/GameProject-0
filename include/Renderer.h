@@ -5,6 +5,7 @@
 #include "Object.h"
 #include "Rect.h"
 #include "Texture.h"
+#include "Util.h"
 
 namespace ccm
 {

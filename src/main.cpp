@@ -17,10 +17,11 @@ int SDL_main(int argc, char* argv[])
 	ccm::Renderer renderer{ app };
 	ccm::TextureGenerator::create(renderer);
 	auto[width, height] = app.getSize();
-	ccm::Object obj{ ccm::Rect{width / 2, height / 2, 128, 128}, ccm::Colors::Green };
-	ccm::Grid grid(ccm::Rect{ 0, 0, width / 2, height }, 16, 18);
 	ccm::Texture mario("../../assets/mario.jpg");
-
+	ccm::Object obj{ ccm::Rect{width / 2, height / 2, 128, 128}, mario };
+	ccm::Grid grid(ccm::Rect{ 0, 0, width / 2, height }, 16, 18);
+	ccm::Object obj2{ ccm::Rect{width / 2, height / 2 + 128, 128, 128}, ccm::Colors::Green };
+	
 	for (int x = 0; x < grid.getWidth(); ++x)
 	{
 		for (int y = 0; y < grid.getHeight(); ++y)
@@ -31,6 +32,7 @@ int SDL_main(int argc, char* argv[])
 	}
 	ccm::FrameTimer ft{};
 
+	obj.bindTexture(mario);
 	/* Game loop */
 	while (!app.m_quit)
 	{
@@ -43,8 +45,9 @@ int SDL_main(int argc, char* argv[])
 		{
 			renderer.draw(o.draw());
 		}
-		renderer.renderTexture(mario, { 0, 0, mario.getWidth(), mario.getHeight() });
+		//renderer.renderTexture(mario, { 0, 0, mario.getWidth(), mario.getHeight() });
 		renderer.draw(obj);
+		renderer.draw(obj2);
 		renderer.render();
 	}
 

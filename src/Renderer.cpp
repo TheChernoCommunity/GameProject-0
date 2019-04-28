@@ -19,10 +19,19 @@ namespace ccm
 		setRenderColor(Colors::Black);
 		SDL_RenderClear(m_renderer);
 	}
+
 	void Renderer::draw(const Object& obj)
 	{
-		setRenderColor(obj.color);
-		SDL_RenderFillRect(m_renderer, &obj.rect);
+		switch(obj.getTypeIndex())
+		{
+		case (unsigned int)Object::variantIndex::Color:
+			setRenderColor(std::get<Color>(obj.apperance));
+			SDL_RenderFillRect(m_renderer, &obj.rect);
+			break;
+		case (unsigned int)Object::variantIndex::Texture:
+			SDL_RenderCopy(m_renderer, &std::get<const Texture*>(obj.apperance)->draw(), NULL, &obj.rect);
+			break;
+		}
 	}
 
 	SDL_Texture* Renderer::createTextureFromSurface(SDL_Surface* src)

@@ -2,7 +2,8 @@
 
 #include "Rect.h"
 #include "Color.h"
-
+#include "Texture.h"
+#include <variant>
 namespace ccm
 {
 	/*
@@ -10,13 +11,26 @@ namespace ccm
 	 * its drawing information, transform, collision information,
 	 * etc...
 	 */
-	struct Object
+	class Object
 	{
+	public:
 		Object() = default;
-		Object(const Rect& r, const Color& c)
-			: rect(r), color(c)
+		Object(const Rect& r, const std::variant<Color, const Texture*>& c)
+			: rect(r), apperance(c)
 		{}
+		Object(const Rect& r, const Texture& c)
+			: Object(r, &c)
+		{}
+		void bindTexture(const Texture& tex)
+		{
+			apperance = &tex;
+		}
+		void setColor(const Color& c)
+		{
+			apperance = c;
+		}
+
 		Rect rect;
-		Color color;
+		std::variant<Color, const Texture*> apperance;
 	};
 }

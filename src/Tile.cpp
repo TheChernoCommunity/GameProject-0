@@ -19,11 +19,11 @@ namespace ccm
 
 	void Tile::fill()
 	{
-		m_object.color = Colors::Green;
+		m_object.setColor(Colors::Green);
 	}
 
 	void Tile::empty()
 	{
-		m_object.color = Colors::Green;
+		m_object.setColor(Colors::Red);
 	}
 }

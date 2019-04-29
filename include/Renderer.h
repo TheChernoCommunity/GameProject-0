@@ -1,8 +1,11 @@
 #pragma once
 
+#include <memory>
 #include "Application.h"
 #include "Object.h"
 #include "Rect.h"
+#include "Texture.h"
+#include "Util.h"
 
 namespace ccm
 {
@@ -24,6 +27,12 @@ namespace ccm
 		 * @param object: object to be drawn
 		 */
 		void draw(const Object& obj);
+
+		SDL_Texture* createTextureFromSurface(SDL_Surface* src);
+
+		void renderTexture(const Texture& source, const Rect& dest);
+
+		void renderSurface(SDL_Surface* source, const Rect dest);
 
 		/*
 		 * Renders all drawn objects to the screen.

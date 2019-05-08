@@ -4,7 +4,7 @@ namespace ccm
 {
 	Texture::Texture(std::string_view textureSource)
 	{
-		auto[pTex, width, height, pitch] = TextureGenerator::loadTextureFromFile(textureSource);
+		auto[pTex, width, height, pitch] = TextureGenerator::getInstance().loadTextureFromFile(textureSource);
 		m_texture.reset(pTex);
 		m_width = width;
 		m_height = height;
@@ -12,7 +12,7 @@ namespace ccm
 	}
 
 	SDL_Texture& Texture::draw() const
-{
+	{
 		return *m_texture;
 	}
 

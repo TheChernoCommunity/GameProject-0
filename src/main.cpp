@@ -15,7 +15,7 @@ int SDL_main(int argc, char* argv[])
 #endif
 	ccm::Application app("Game", 1280, 720);
 	ccm::Renderer renderer{ app };
-	ccm::TextureGenerator::create(renderer);
+	ccm::TextureGenerator::initialize(renderer);
 	auto[width, height] = app.getSize();
 	ccm::Texture mario("../../assets/mario.jpg");
 	ccm::Object obj{ ccm::Rect{width / 2, height / 2, 128, 128}, mario };

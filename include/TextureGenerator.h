@@ -2,31 +2,25 @@
 
 #include "SDL.h"
 #include "stb_image.h"
-
+#include "Singleton.h"
 #include <string_view>
 #include <assert.h>
 #include <tuple>
 namespace ccm
 {
 	class Renderer;
-	class TextureGenerator
+	class TextureGenerator : public Singleton<TextureGenerator>
 	{
 	private:
 		struct TextureInfo { SDL_Texture* tex; int width, height, pitch; };
 	public:
-
-		/*
-		* Creates an instantiation of the singleton
-		* @Param renderer: reference to the render to use to generate SDL_Textures
-		*/
-		static void create(Renderer& r);
-
+		TextureGenerator(Renderer&);
 		/*
 		* Generates an SDL texture from a file
 		* @param Texture Source: the image file to be loaded
 		* @return: A pointer to the loaded SDL_texture, the width, height, and pitch of the loaded image
 		*/
-		static TextureInfo loadTextureFromFile(std::string_view textureSource);
+		TextureInfo loadTextureFromFile(std::string_view textureSource);
 	private:
 		inline static Renderer* m_renderer;
 	};

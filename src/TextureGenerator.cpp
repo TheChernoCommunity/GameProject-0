@@ -3,7 +3,7 @@
 
 namespace ccm
 {
-	void TextureGenerator::create(Renderer& r)
+	TextureGenerator::TextureGenerator(Renderer& r)
 	{
 		if (!m_renderer)
 		{
